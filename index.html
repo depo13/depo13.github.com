@@ -1,20 +1,87 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<!DOCTYPE html>
+<html>
 <head>
-<title>0xBADDCAFE</title>
+    <title>Spirit Mars Rover Cam</title>
+<style>
+html, body, #container {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+} 
+#container {
+  position: relative;
+  background: black;
+}
+#alfa, #bravo {
+  /*width: 50px;
+  height: 50px;*/
+  position: absolute;
+  background-color: white;
+}
+</style>
 </head>
 <body>
-  
-<div>
-<pre>
- (   Demitasse,
-  )  s'il vous
-c[]  plait...
-</pre>
+
+<div id ="container">
+<div id ="alfa" class="panorama"><img src="PIA16441_McMurdo_Merged_Cyl_L456F.jpg" /></div>
+<div id ="bravo" class="panorama"><img src="PIA16441_McMurdo_Merged_Cyl_L456F.jpg" /></div>
+<div id = "status" style="padding: 25px;font-family: monospace; font-size: 12px;position: relative;">STATUS:<br><pre><--|--></pre></div>
 </div>
+
+<script>
+var alfa = null, bravo = null;
+var img=new Image();
+(function () {
+    img.src='PIA16441_McMurdo_Merged_Cyl_L456F.jpg';
+})();
+function init(){
+    alfa = document.getElementById('alfa');
+    bravo = document.getElementById('bravo');
+    alfa.style.left = '0px';
+    bravo.style.left = img.width + 'px';
+    alfa.style.top = '0px';
+    bravo.style.top = '0px';
+}
+function setStatus(){
+    document.getElementById("status").innerHTML = "STATUS: OK" + "<br>"
+    + "Low Ridge<br>814th Martian day<br>" 
+    + "<br><pre><--|--></pre><br><br>"
+    + parseInt(alfa.style.left) + "<br>" + parseInt(alfa.style.top);
+}
+function moveHor(dx) {
+    alfa.style.left = -(img.width - parseInt(alfa.style.left) + dx) % img.width + 'px';
+    bravo.style.left = parseInt(alfa.style.left) + img.width + 'px';
+    setStatus();
+}
+function moveVert(dx) {
+    var lim = (window.innerHeight - img.height);
+    if (parseInt(alfa.style.top) +dx >= lim && parseInt(alfa.style.top) +dx <= 0) {
+        alfa.style.top = (parseInt(alfa.style.top) + dx) + 'px';
+        bravo.style.top = (parseInt(bravo.style.top) + dx) + 'px';
+        setStatus();
+    }
+}
+
+window.onload = init;
+
+document.onkeydown = function(e) {
+e = e || event
+switch(e.keyCode) {
+case 37: // left
+moveHor(-5);
+return false
+case 38: // up
+moveVert(5);
+return false
+case 39: // right
+moveHor(5);
+return false
+case 40: // down
+moveVert(-5);
+return false
+}
+} 
+</script>
 
 </body>
 </html>
-
-
