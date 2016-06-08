@@ -25,7 +25,7 @@ html, body, #container {
 <div id ="container">
 <div id ="alfa" class="panorama"><img src="PIA16441_McMurdo_Merged_Cyl_L456F.jpg" /></div>
 <div id ="bravo" class="panorama"><img src="PIA16441_McMurdo_Merged_Cyl_L456F.jpg" /></div>
-<div id = "status" style="padding: 25px;font-family: monospace; font-size: 12px;position: relative;"></div>
+<div id = "status" style="padding: 25px;font-family: monospace; font-size: 12px;position: relative;">STATUS:<br><pre><--|--></pre></div>
 </div>
 
 <script>
@@ -34,12 +34,6 @@ var img=new Image();
 (function () {
     img.src='PIA16441_McMurdo_Merged_Cyl_L456F.jpg';
 })();
-function setStatus(){
-    document.getElementById("status").innerHTML = "STATUS: OK" + "<br>"
-    + "Low Ridge<br>814th Martian day<br>" 
-    + "<br><pre><--|--></pre><br><br>"
-    + parseInt(alfa.style.left) + "<br>" + parseInt(alfa.style.top);
-}
 function init(){
     alfa = document.getElementById('alfa');
     bravo = document.getElementById('bravo');
@@ -47,7 +41,12 @@ function init(){
     bravo.style.left = img.width + 'px';
     alfa.style.top = '0px';
     bravo.style.top = '0px';
-    setStatus();
+}
+function setStatus(){
+    document.getElementById("status").innerHTML = "STATUS: OK" + "<br>"
+    + "Low Ridge<br>814th Martian day<br>" 
+    + "<br><pre><--|--></pre><br><br>"
+    + parseInt(alfa.style.left) + "<br>" + parseInt(alfa.style.top);
 }
 function moveHor(dx) {
     alfa.style.left = -(img.width - parseInt(alfa.style.left) + dx) % img.width + 'px';
