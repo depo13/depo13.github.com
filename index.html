@@ -41,7 +41,9 @@ function init(){
     bravo.style.left = img.width + 'px';
     alfa.style.top = '0px';
     bravo.style.top = '0px';
-    setStatus();
+    document.getElementById("status").innerHTML = "STATUS: SYN-SENT" + "<br>"
+    + "USE THE UP/DOWN LEFT/RIGHT ARROW KEYS<br>" 
+    + "<br><pre><--|--></pre><br><br>"
 }
 function setStatus(){
     document.getElementById("status").innerHTML = "STATUS: OK" + "<br>"
