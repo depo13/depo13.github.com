@@ -18,22 +18,29 @@ html, body, #container {
   background-color: white;
   display: none;
 }
+#status {
+  padding: 25px;
+  font-family: monospace;
+  font-size: 12px;
+  position: relative;
+}
 video {
 position: absolute;
 z-index: 100;
 top: 0; left: 0;
 min-width: 100%; min-height: 100%;
 opacity: .0875; filter: alpha(opacity=8);
+display: none;
 }
 </style>
 </head>
 <body>
 
-<div id ="container">
-<video src="flicker.mp4" loop autoplay></video>
-<div id ="alfa" class="panorama"><img id = "alfasrc" /></div>
-<div id ="bravo" class="panorama"><img id = "bravosrc" /></div>
-<div id = "status" style="padding: 25px;font-family: monospace; font-size: 12px;position: relative;">STATUS: SYN-SENT<br>USE THE UP/DOWN LEFT/RIGHT ARROW KEYS</div>
+<div id = "container">
+<video id = "flicker" src="flicker.mp4" loop autoplay></video>
+<div id = "alfa" class="panorama"><img id = "alfasrc" /></div>
+<div id = "bravo" class="panorama"><img id = "bravosrc" /></div>
+<div id = "status">Establishing secure connection...<br>USE THE UP/DOWN LEFT/RIGHT ARROW KEYS</div>
 </div>
 
 <script>
@@ -41,6 +48,7 @@ var alfa = null, bravo = null;
 var img=new Image();
 function display()
 {
+    document.getElementById('flicker').style.display = 'block';
     document.getElementById('alfa').style.display = 'block';
     document.getElementById('bravo').style.display = 'block';
     document.getElementById('container').style.color = 'black';
