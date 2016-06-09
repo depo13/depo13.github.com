@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Spirit Mars Rover Cam 360-degree</title>
+    <title>Spirit Mars Rover Cam</title>
 <style>
 html, body, #container {
   height: 100%;
@@ -25,7 +25,7 @@ html, body, #container {
 <div id ="container">
 <div id ="alfa" class="panorama"><img src="PIA16441_McMurdo_Merged_Cyl_L456F.jpg" /></div>
 <div id ="bravo" class="panorama"><img src="PIA16441_McMurdo_Merged_Cyl_L456F.jpg" /></div>
-<div id = "status" style="padding: 25px;font-family: monospace; font-size: 12px;position: relative;">STATUS: SYN-SENT<br>USE THE UP/DOWN LEFT/RIGHT ARROW KEYS</div>
+<div id = "status" style="padding: 25px;font-family: monospace; font-size: 12px;position: relative;">STATUS: SYN-SENT<br>USE THE UP/DOWN LEFT/RIGHT ARROW KEYS<br><pre><--|--></pre></div>
 </div>
 
 <script>
@@ -34,10 +34,6 @@ var img=new Image();
 (function () {
     img.src='PIA16441_McMurdo_Merged_Cyl_L456F.jpg';
 })();
-
-var ctrl = "<pre>    U    \nL<--|-->R\n    D    </pre>"
-var lim = (window.innerHeight - img.height);
-
 function init(){
     alfa = document.getElementById('alfa');
     bravo = document.getElementById('bravo');
@@ -46,27 +42,25 @@ function init(){
     alfa.style.top = '0px';
     bravo.style.top = '0px';
     document.getElementById("status").innerHTML = "STATUS: OK" + "<br>"
-    + "Mars Exploration Rover Spirit<br>Low Ridge" 
-    + "<br>" + ctrl;
+    + "Low Ridge<br>814th Martian day<br>" 
+    + "<br><pre><--|--></pre><br><br>"
 }
 function setStatus(){
-    var az = parseInt(parseInt(alfa.style.left)*(-1)/img.width*360);
-    var alt = parseInt(parseInt(alfa.style.top)*(-1)/lim*90);
     document.getElementById("status").innerHTML = "STATUS: OK" + "<br>"
-    + "Mars Exploration Rover Spirit<br>Low Ridge" 
-    + "<br>" + ctrl
-    + "&nbsp;" + "AZ: " + az + "&deg;" + "<br>"
-    + "ALT: " + alt + "&deg;";
+    + "Low Ridge<br>814th Martian day<br>" 
+    + "<br><pre><--|--></pre><br><br>"
+    + parseInt(alfa.style.left) + "<br>" + parseInt(alfa.style.top);
 }
 function moveHor(dx) {
     alfa.style.left = -(img.width - parseInt(alfa.style.left) + dx) % img.width + 'px';
     bravo.style.left = parseInt(alfa.style.left) + img.width + 'px';
     setStatus();
 }
-function moveVert(dy) {
-    if (parseInt(alfa.style.top) +dy >= lim && parseInt(alfa.style.top) +dy <= 0) {
-        alfa.style.top = (parseInt(alfa.style.top) + dy) + 'px';
-        bravo.style.top = (parseInt(bravo.style.top) + dy) + 'px';
+function moveVert(dx) {
+    var lim = (window.innerHeight - img.height);
+    if (parseInt(alfa.style.top) +dx >= lim && parseInt(alfa.style.top) +dx <= 0) {
+        alfa.style.top = (parseInt(alfa.style.top) + dx) + 'px';
+        bravo.style.top = (parseInt(bravo.style.top) + dx) + 'px';
         setStatus();
     }
 }
