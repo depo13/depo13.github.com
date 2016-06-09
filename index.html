@@ -39,6 +39,12 @@ video {
   position: relative;
   display: none;
 }
+#cross {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>
 </head>
 <body>
@@ -57,6 +63,7 @@ MARS EXPLORATION ROVER SPIRIT
 </div>
 <div id = "status">ESTABLISHING SECURE CONNECTION...<br>USE THE UP/DOWN LEFT/RIGHT ARROW KEYS</div>
 </div>
+<span id = "cross">+</span>
 
 <script>
 var alfa = null, bravo = null;
