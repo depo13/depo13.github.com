@@ -1,0 +1,48 @@
+/**
+ * spirit.css
+ *
+ * Mars Exploration Rover Spirit Pancam 360-degree
+ *
+ */
+html, body, #container {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+} 
+#container {
+  position: relative;
+  background: black;
+  color: white;
+}
+#alfa, #bravo {
+  position: absolute;
+  background-color: white;
+  display: none;
+}
+#status {
+  padding: 25px;
+  font-family: monospace;
+  font-size: 100%;
+  position: relative;
+}
+video {
+  position: absolute;
+  z-index: 100;
+  top: 0; left: 0;
+  min-width: 100%; min-height: 100%;
+  opacity: .0875; filter: alpha(opacity=8);
+  display: none;
+}
+#info {
+  padding: 25px;
+  font-family: monospace;
+  font-size: 100%;
+  position: relative;
+  display: none;
+}
+#cross {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
