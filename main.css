@@ -1,0 +1,23 @@
+/**
+ * main.css
+ *
+ * 0xBADDCAFE
+ *
+ */
+ html, body, #container {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+} 
+#container {
+  position: relative;
+  background: black;
+  color: white;
+  padding: 25px;
+  font-family: monospace;
+  font-size: 100%;
+}
+a:link    {color:white; background-color:transparent; text-decoration:underline}
+a:visited {color:white; background-color:transparent; text-decoration:none}
+a:hover   {color:white; background-color:transparent; text-decoration:underline}
+a:active  {color:white; background-color:transparent; text-decoration:underline}
