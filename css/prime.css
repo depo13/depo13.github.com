@@ -1,0 +1,12 @@
+html, body {
+    font-family: 'FuturaPTWebBook';
+  } 
+
+@font-face {
+	font-family: 'FuturaPTWebBook';
+	src:
+		url('../fonts/Futura-PT_Book.woff2') format('woff2'),
+		url('../fonts/Futura-PT_Book.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
