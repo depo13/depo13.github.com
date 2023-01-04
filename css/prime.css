@@ -7,6 +7,13 @@ body {
 	color: #BFBFBF;
    }
 
+hr {
+    background-color: #BFBFBF;
+	color: #BFBFBF;
+    border: 0 none;
+    height: 1px;
+}
+
 @font-face {
 	font-family: 'FuturaPTWebBook';
 	src:
